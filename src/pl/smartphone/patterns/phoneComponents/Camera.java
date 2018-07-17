@@ -15,7 +15,6 @@ public class Camera {
     public Camera(int resolution) {
         this.resolution = resolution;
     }
-    private String string;
 
     @Override
     public String toString() {
