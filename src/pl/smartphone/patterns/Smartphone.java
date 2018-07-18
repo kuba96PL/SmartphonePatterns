@@ -11,8 +11,15 @@ public class Smartphone {
     private Cover cover;
     private Screen screen;
     private Camera camera;
+    private Producer producer;
 
-    private Smartphone(){
+    protected Smartphone(Builder<?> builder){
+        this.model = builder.model;
+        this.processor = builder.processor;
+        this.cover = builder.cover;
+        this.screen = builder.screen;
+        this.camera = builder.camera;
+        this.producer = builder.producer;
     }
 
     public String getModel() {
@@ -35,41 +42,47 @@ public class Smartphone {
         return camera;
     }
 
-    public static class Builder{
+    public Producer getProducer() {
+        return producer;
+    }
+
+    public static class Builder <T extends  Builder<T>>{
+
         private String model;
         private Processor processor;
         private Cover cover;
         private Screen screen;
         private Camera camera;
+        private Producer producer;
+
 
         public Builder(Processor processor, Screen screen){
             this.processor = processor;
             this.screen = screen;
         }
 
-        public Builder withModel(String model){
+        public T withModel(String model){
             this.model = model;
-            return this;
+            return (T)this;
         }
 
-        public Builder withCover(Cover cover){
+        public T withCover(Cover cover){
             this.cover = cover;
-            return this;
+            return (T)this;
         }
 
-        public Builder withCamera(Camera camera){
+        public T withCamera(Camera camera){
             this.camera = camera;
-            return this;
+            return (T)this;
+        }
+
+        public T producedBy(Producer producer){
+            this.producer = producer;
+            return (T)this;
         }
 
         public Smartphone build(){
-            Smartphone phone = new Smartphone();
-            phone.camera = this.camera;
-            phone.cover = this.cover;
-            phone.model = this.model;
-            phone.processor = this.processor;
-            phone.screen = this.screen;
-            return phone;
+            return new Smartphone(this);
         }
     }
 
@@ -81,6 +94,7 @@ public class Smartphone {
                 ", cover=" + cover +
                 ", screen=" + screen +
                 ", camera=" + camera +
+                ", producer=" + producer +
                 '}';
     }
 }
