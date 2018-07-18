@@ -2,18 +2,17 @@ package pl.smartphone.patterns;
 
 import pl.smartphone.patterns.phoneComponents.Processor;
 import pl.smartphone.patterns.phoneComponents.Screen;
+import pl.smartphone.patterns.system.IoSAble;
 
-public class Iphone extends Smartphone{
+public class Iphone extends Smartphone implements IoSAble {
 
     private boolean applePay;
     private Sim simType;
-    private Producer producer;
 
     protected Iphone(Builder builder) {
         super(builder);
         this.applePay = builder.applePay;
         this.simType = builder.simType;
-        this.producer = builder.producer;
     }
 
     public boolean isApplePay() {
@@ -24,10 +23,6 @@ public class Iphone extends Smartphone{
         return simType;
     }
 
-    public Producer getProducer() {
-        return producer;
-    }
-
     public static class Builder extends Smartphone.Builder<Builder>{
 
         public Builder(Processor processor, Screen screen){
@@ -36,20 +31,14 @@ public class Iphone extends Smartphone{
 
         private boolean applePay;
         private Sim simType;
-        private Producer producer;
 
-        public Iphone.Builder withApplePay(boolean applePay){
+        public Builder withApplePay(boolean applePay){
             this.applePay = applePay;
             return this;
         }
 
-        public Iphone.Builder withSimType(Sim simType){
+        public Builder withSimType(Sim simType){
             this.simType = simType;
-            return this;
-        }
-
-        public Iphone.Builder producedBy(Producer producer){
-            this.producer = producer;
             return this;
         }
 
@@ -63,7 +52,6 @@ public class Iphone extends Smartphone{
         return super.toString() + "Iphone{" +
                 "applePay=" + applePay +
                 ", simType=" + simType +
-                ", producer=" + producer +
                 '}';
     }
 }

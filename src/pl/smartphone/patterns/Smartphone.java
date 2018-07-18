@@ -11,7 +11,7 @@ public class Smartphone {
     private Cover cover;
     private Screen screen;
     private Camera camera;
-
+    private Producer producer;
 
     protected Smartphone(Builder<?> builder){
         this.model = builder.model;
@@ -19,6 +19,7 @@ public class Smartphone {
         this.cover = builder.cover;
         this.screen = builder.screen;
         this.camera = builder.camera;
+        this.producer = builder.producer;
     }
 
     public String getModel() {
@@ -41,6 +42,10 @@ public class Smartphone {
         return camera;
     }
 
+    public Producer getProducer() {
+        return producer;
+    }
+
     public static class Builder <T extends  Builder<T>>{
 
         private String model;
@@ -48,6 +53,7 @@ public class Smartphone {
         private Cover cover;
         private Screen screen;
         private Camera camera;
+        private Producer producer;
 
 
         public Builder(Processor processor, Screen screen){
@@ -70,6 +76,11 @@ public class Smartphone {
             return (T)this;
         }
 
+        public T producedBy(Producer producer){
+            this.producer = producer;
+            return (T)this;
+        }
+
         public Smartphone build(){
             return new Smartphone(this);
         }
@@ -83,6 +94,7 @@ public class Smartphone {
                 ", cover=" + cover +
                 ", screen=" + screen +
                 ", camera=" + camera +
+                ", producer=" + producer +
                 '}';
     }
 }
