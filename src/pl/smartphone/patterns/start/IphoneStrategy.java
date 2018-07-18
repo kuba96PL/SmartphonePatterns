@@ -1,4 +1,4 @@
-package pl.smartphone.patterns.call;
+package pl.smartphone.patterns.start;
 
 import pl.smartphone.patterns.Producer;
 import pl.smartphone.patterns.Smartphone;
