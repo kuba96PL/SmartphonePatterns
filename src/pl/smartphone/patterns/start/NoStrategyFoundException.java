@@ -1,4 +1,4 @@
-package pl.smartphone.patterns.call;
+package pl.smartphone.patterns.start;
 
 public class NoStrategyFoundException extends Exception {
     public NoStrategyFoundException(){

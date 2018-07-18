@@ -1,6 +1,6 @@
 package pl.smartphone.patterns;
 
-import pl.smartphone.patterns.call.*;
+import pl.smartphone.patterns.start.*;
 import pl.smartphone.patterns.phoneComponents.Camera;
 import pl.smartphone.patterns.phoneComponents.Cover;
 import pl.smartphone.patterns.phoneComponents.Processor;
@@ -49,7 +49,7 @@ public class Main {
                 .withAndroidVersion(AndroidVersion.LOLLIPOP)
                 .build();
 
-         List<Smartphone> listOfPhones = Arrays.asList(samsung, iphone, htc, sony);
+         List<Smartphone> listOfPhones = Arrays.asList(samsung, iphone, htc);
 
          List<SmartphoneStrategy> list = new ArrayList<>();
         list.add(new SamsungStrategy());

@@ -7,7 +7,6 @@ import pl.smartphone.patterns.system.Androidable;
 public class Samsung extends Smartphone implements Androidable {
 
     private Sim simType;
-    private Producer producer;
     private boolean NFC;
     private AndroidVersion androidVersion;
 
@@ -64,7 +63,6 @@ public class Samsung extends Smartphone implements Androidable {
     public String toString() {
         return super.toString() + "Samsung{" +
                 "simType=" + simType +
-                ", producer=" + producer +
                 ", NFC=" + NFC +
                 ", androidVersion=" + androidVersion +
                 '}';

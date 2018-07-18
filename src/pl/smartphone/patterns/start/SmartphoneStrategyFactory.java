@@ -1,4 +1,4 @@
-package pl.smartphone.patterns.call;
+package pl.smartphone.patterns.start;
 import pl.smartphone.patterns.Smartphone;
 
 import java.util.ArrayList;
@@ -13,6 +13,7 @@ public class SmartphoneStrategyFactory {
     }
 
     public SmartphoneStrategy getStrategy(Smartphone smartphone) throws NoStrategyFoundException{
+
         for(SmartphoneStrategy strategy : strategyList){
             if (strategy.supports(smartphone)){
                 return strategy;
