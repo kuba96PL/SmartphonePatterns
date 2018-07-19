@@ -42,26 +42,29 @@ public class Main {
 
         Smartphone sony = new HTC.Builder(new Processor("AMD"), new Screen(1234, 5678))
                 .producedBy(Producer.SONY)
-                .withModel("ONE")
+                .withModel("Xperia")
                 .withCamera(new Camera(20))
                 .withSimType(Sim.MICROSIM)
                 .withCover(new Cover("stone"))
                 .withAndroidVersion(AndroidVersion.LOLLIPOP)
                 .build();
 
-         List<Smartphone> listOfPhones = Arrays.asList(samsung, iphone, htc);
+        List<Smartphone> listOfPhones = Arrays.asList(samsung, iphone, htc, sony);
 
-         List<SmartphoneStrategy> list = new ArrayList<>();
-        list.add(new SamsungStrategy());
-        list.add(new HTCStrategy());
-        list.add(new IphoneStrategy());
+        List<SmartphoneStrategy> list = Arrays.asList(new SamsungStrategy(), new HTCStrategy(), new IphoneStrategy());
 
-         SmartphoneStrategyFactory factory = new SmartphoneStrategyFactory(list);
+        SmartphoneStrategyFactory factory = new SmartphoneStrategyFactory(list);
 
-         for (Smartphone phone : listOfPhones){
-             System.out.println("\nPhone: " + phone.getModel());
-             factory.getStrategy(phone).start();
-         }
-        }
+        listOfPhones.forEach(smartphone -> {
+            System.out.println("\nPhone: " + smartphone.getModel());
+            try {
+                factory.getStrategy(smartphone).start();
+            } catch (NoStrategyFoundException e) {
+                System.out.println(smartphone.getModel() + ": I don't know how to start it");
+            }
+        });
+
+
     }
+}
 
